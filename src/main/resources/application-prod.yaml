@@ -1,0 +1,66 @@
+server:
+  port: ${DSQ_APP_PORT:2002}
+spring:
+  codec:
+    max-in-memory-size: 1000KB
+  application:
+    name: ${DSQ_APP_NAME:DSQLiveOrgInfo}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    username: postgres
+    password: 1234
+    url: jdbc:postgresql://localhost:5432/live_org_info
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+    groups-order: asc
+    operations-sorter: alpha
+    try-it-out-enabled: true
+    tags-sorter: alpha
+    display-request-duration: true
+  api-docs:
+    path: /api/doc
+queue:
+  name:
+    dsq: cportal_tax_in
+
+api:
+  info:
+    title: Davlat Xaridlari Markaziy Axborot Portali
+    description: Davlat Xaridlari Markaziy Axborot Portali proyektidagi API lar
+    version: 1.2
+    contact-name: Viktor Dimkov
+    contact-email: vd30003vd@mail.ru
+    contact-url: https://t.me/Cor_habe
+    license-name: https://xarid.mf.uz
+    license-url: https://xarid.mf.uz
+dsq:
+  api:
+    user: "$Finance%"
+    password: "m8sxjV&LyT"
+    url:
+      protocol: "https://"
+      domain: "mspd-api.soliq.uz"
+      path:
+        login-api: "/minfin2/api/authenticate/login"
+        juridic-info-api: "/minfin2/finance/get-company"
+        individual-info-api: "/minfin2/finance/get-entrepreneur-data"
+        financial-statements-form-one-api: "/minfin2/finance/get-financial-report-form1"
+        financial-statements-form-two-api: "/minfin2/finance/get-financial-report-form2"
+        doubtful-taxpayer-api: "/nimadr"
+        purchase-info-api: "/minfin2/finance/save/country-purchase-and-member"
+        tax-gap-info-api: "/minfin2/finance/get-company-info-tax-type-data"
+
+request:
+  id:
+    file:
+      path: /home/qurbonov/backend/file/requestId.dat
+
